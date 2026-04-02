@@ -12,4 +12,5 @@ class ParentNode(HTMLNode):
         finalstring = ""
         for child in self.children:
             finalstring += child.to_html()
+        return f"<{self.tag}>{finalstring}</{self.tag}>"
         
