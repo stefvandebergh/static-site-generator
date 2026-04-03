@@ -9,7 +9,7 @@ class BlockType(Enum):
     ORDERED_LIST = 6
 
 
-def block_to_block_type(block -> BlockType):
+def block_to_block_type(block:str) -> BlockType:
     if block.startswith("# "):
         return BlockType.HEADING
     elif block.startswith("```") and block.endswith("```"):
