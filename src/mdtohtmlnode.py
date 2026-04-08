@@ -16,7 +16,7 @@ def markdown_to_html_node(md_doc):
             case BlockType.CODE:
                 htmlnode = ParentNode("pre", [LeafNode("code", block[4:-3])], None)
             case BlockType.QUOTE:
-                block = " ".join(line.replace("> ", "", 1) for line in block.split("\n"))
+                block = "\n".join(line.replace("> ", "", 1) for line in block.split("\n"))
                 htmlnode = ParentNode("blockquote", text_to_children(block), None)
             case BlockType.PARAGRAPH:
                 block = " ".join(line.strip() for line in block.split("\n"))
@@ -43,3 +43,14 @@ def text_to_children(test):
     for textnode in textnodes:
         htmlnodes.append(text_node_to_html_node(textnode))
     return htmlnodes
+
+
+md = """
+> This is a blockquote
+> that spans multiple lines
+> and has **bold** and _italic_ text
+     """
+node = markdown_to_html_node(md)
+html = node.to_html()
+print(html)
+print("<div><blockquote>This is a blockquote that spans multiple lines and has <b>bold</b> and <i>italic</i> text</blockquote></div>")
