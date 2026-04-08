@@ -6,9 +6,8 @@ def copy_static_to_public(source_dir, destination_dir):
         raise ValueError(f"Source directory '{source_dir}' does not exist.")
     if destination_dir and os.path.exists(destination_dir):
         clear_directory(destination_dir)
-        os.mkdir(destination_dir)
-    else:
-        raise ValueError(f"Destination directory '{destination_dir}' does not exist.")
+    os.mkdir(destination_dir)
+    
     copy_static_to_public_r(source_dir, destination_dir)
     
 
