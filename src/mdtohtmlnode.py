@@ -43,17 +43,3 @@ def text_to_children(test):
     for textnode in textnodes:
         htmlnodes.append(text_node_to_html_node(textnode))
     return htmlnodes
-
-
-md = """
-1. First item
-2. Second item
-3. Third item
-4. Fourth item
-        """
-
-node = markdown_to_html_node(md)
-# print(node)
-html = node.to_html()
-print(html)
-print("<div><blockquote>This is a blockquote that spans multiple lines and has <b>bold</b> and <i>italic</i> text</blockquote></div>")
